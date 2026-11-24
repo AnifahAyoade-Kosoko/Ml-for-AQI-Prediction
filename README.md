@@ -1,78 +1,31 @@
-# Ml-for-AQI-Prediction
-🌍 Air Quality Prediction Using Machine Learning
-📊 Project Overview
-This project investigates the use of machine learning (ML) and deep learning (DL) algorithms to predict the Air Quality Index (AQI) in Delhi, India. Given the severe pollution crisis in Delhi, this research applies data-driven models to accurately forecast AQI, identify key pollutant contributors, and improve interpretability using Explainable AI (XAI) techniques like SHAP and LIME.
+# Air Quality Index (AQI) Prediction Using Machine Learning
 
-🧠 Models Implemented
-Random Forest (RF) 🌲
+This is my MSc Data Science dissertation project at the University of Wolverhampton.
 
-Extreme Gradient Boosting (XGBoost) ⚡
+## Overview
 
-Long Short-Term Memory (LSTM) 🧠
+This project compares machine learning and deep learning models for predicting the Air Quality Index (AQI) in Delhi, India. It also looks at which pollutants influence air quality the most, and uses Explainable AI methods (SHAP and LIME) to make the models' predictions easier to understand.
 
-Transformer Networks 🤖
+## Data
 
-These models were trained on historical AQI and pollutant data (2020–2023) and evaluated using MAE, RMSE, and R² Score.
+The project uses historical AQI and pollutant data for Delhi from 2020 to 2023, with 18,776 records in total. The dataset comes from [add the dataset link here].
 
-🚀 Key Results
-Model	MAE	RMSE	R² Score
-Random Forest	0.1155	2.6069	0.9874
-Transformer	0.1231	2.8910	0.9996 ✅
-XGBoost	0.1295	2.9578	0.9802
-LSTM	0.1542	3.2245	0.9101
-👉 Random Forest performed best in terms of MAE and RMSE, while the Transformer model achieved the highest R² score.
+## Methods
 
-🧾 Explainable AI (XAI)
-To enhance trust and transparency:
+I prepared the data by filling missing values with the median, capping outliers using the interquartile range, scaling the features, encoding categories and creating time-based features. Class imbalance was handled with SMOTEENN. I then trained and compared four models: Random Forest, XGBoost, LSTM and Transformer, and tuned them with grid search and randomised search. The models were evaluated using MAE, RMSE and R². SHAP was used to show which pollutants mattered most overall, and LIME was used to explain individual predictions.
 
-SHAP (Shapley Additive Explanations) identified PM2.5 and PM10 as the most influential pollutants.
+## Results
 
-LIME offered localized interpretations of model predictions.
+Random Forest gave the lowest error, with an MAE of 0.1155 and an RMSE of 2.6069. The Transformer was next with an MAE of 0.1231 and an RMSE of 2.8910, followed by XGBoost with 0.1295 and 2.9578, and LSTM with 0.1542 and 3.2245. The SHAP analysis showed that PM10 and PM2.5 had the biggest influence on AQI.
 
-🌐 Deployment
-The best-performing model was deployed using Streamlit, enabling real-time AQI predictions and visual explanations for end-users.
+## Limitations and Future Work
 
-📍 Case Study: Delhi, India
-Delhi, one of the most polluted cities globally, served as the study area. The research focuses on:
+AQI is calculated from pollutant concentrations, so the models partly relearn that calculation, which explains the very high scores. A useful next step would be forecasting future AQI using lagged values and weather data. The data covers only one city, so the results may not apply to other places.
 
-Seasonal AQI trends
+## Files
 
-Pollutant concentration patterns
+EDA.ipynb contains the exploratory data analysis. Model development.ipynb contains the preprocessing, model training and evaluation.
 
-Insights for policy interventions and public health responses
+## Tools
 
-📁 Project Structure
-bash
-Copy
-Edit
-📦 air-quality-ml
- ┣ 📂 data/                     # Raw and processed AQI datasets
- ┣ 📂 models/                   # Trained ML and DL models
- ┣ 📂 notebooks/                # EDA and model training notebooks
- ┣ 📂 explainability/           # SHAP & LIME scripts
- ┣ 📂 streamlit_app/            # Web app code for deployment
- ┣ 📜 requirements.txt
- ┗ 📜 README.md
-📌 Technologies & Tools
-Python (Pandas, NumPy, Scikit-learn, XGBoost, TensorFlow/Keras)
-
-SHAP, LIME
-
-Streamlit
-
-Google Colab (for model training)
-
-🎯 Objectives
-Predict AQI using advanced ML and DL models.
-
-Identify dominant pollutants affecting air quality.
-
-Ensure model interpretability with XAI.
-
-Provide an interactive, user-friendly AQI forecasting tool.
-
-📚 Academic Contribution
-This work is part of the MSc Data Science dissertation by Anifah Ayoade-Kosoko at the School of Mathematics and Computer Science, exploring how AI can support environmental sustainability and public health policy.
-
-📌 Keywords
-Air Quality, Machine Learning, AQI Forecasting, SHAP, LIME, Explainable AI, Environmental Data Science, Delhi, Public Health
+Python, Pandas, NumPy, Scikit-learn, XGBoost, TensorFlow and Keras, SHAP, LIME, Matplotlib, Seaborn, Plotly and Google Colab.
